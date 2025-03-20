@@ -18,3 +18,6 @@ tile_set = ExtResource("1_iuonh")
 
 [node name="BasicEnemy" parent="." instance=ExtResource("4_l3cfh")]
 collision_layer = 0
+
+[node name="BasicEnemy2" parent="." instance=ExtResource("4_l3cfh")]
+collision_layer = 0
