@@ -3,8 +3,8 @@ extends CharacterBody2D
 var MAX_SPEED = 75
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready() :
+	$Area2D.area_entered.connect(on_area_enter)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,3 +18,7 @@ func get_vactor_to_player():
 	if(player != null):
 		return (player.global_position - global_position).normalized()
 	return Vector2.ZERO
+	
+	
+func on_area_enter(other_area : Area2D):
+	queue_free()

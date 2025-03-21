@@ -15,9 +15,75 @@ tile_map_data = PackedByteArray("AAABAAIAAAAGAAMAAAACAAIAAAAAAAQAAAACAAMAAAAAAAQ
 tile_set = ExtResource("1_iuonh")
 
 [node name="Player" parent="." instance=ExtResource("1_hyk8p")]
+position = Vector2(302, 225)
 
 [node name="BasicEnemy" parent="." instance=ExtResource("4_l3cfh")]
 collision_layer = 0
 
 [node name="BasicEnemy2" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(77, 314)
+collision_layer = 0
+
+[node name="BasicEnemy3" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(253, 300)
+collision_layer = 0
+
+[node name="BasicEnemy4" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(500, 271)
+collision_layer = 0
+
+[node name="BasicEnemy5" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(59, 198)
+collision_layer = 0
+
+[node name="BasicEnemy6" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(189, 205)
+collision_layer = 0
+
+[node name="BasicEnemy7" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(327, 150)
+collision_layer = 0
+
+[node name="BasicEnemy8" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(278, 67)
+collision_layer = 0
+
+[node name="BasicEnemy9" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(396, 265)
+collision_layer = 0
+
+[node name="BasicEnemy10" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(121, 373)
+collision_layer = 0
+
+[node name="BasicEnemy11" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(559, 370)
+collision_layer = 0
+
+[node name="BasicEnemy12" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(478, 123)
+collision_layer = 0
+
+[node name="BasicEnemy13" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(158, 137)
+collision_layer = 0
+
+[node name="BasicEnemy14" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(575, 210)
+collision_layer = 0
+
+[node name="BasicEnemy15" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(253, 381)
+collision_layer = 0
+
+[node name="BasicEnemy16" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(402, 341)
+collision_layer = 0
+
+[node name="BasicEnemy17" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(408, 402)
+collision_layer = 0
+
+[node name="BasicEnemy18" parent="." instance=ExtResource("4_l3cfh")]
+position = Vector2(135, 276)
 collision_layer = 0
