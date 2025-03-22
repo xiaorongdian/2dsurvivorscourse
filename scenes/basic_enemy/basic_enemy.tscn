@@ -4,13 +4,15 @@
 [ext_resource type="Script" uid="uid://bns7ujtht4bw7" path="res://scenes/basic_enemy/basic_enemy.gd" id="1_gxg7h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gxg7h"]
-radius = 12.0
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fng3e"]
-radius = 5.0
+radius = 6.08276
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(24, 14)
+collision_layer = 0
+motion_mode = 1
 script = ExtResource("1_gxg7h")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -26,5 +28,6 @@ texture = ExtResource("1_fng3e")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 0
+light_mask = 8
+visibility_layer = 9
 shape = SubResource("CircleShape2D_fng3e")

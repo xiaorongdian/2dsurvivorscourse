@@ -8,6 +8,7 @@ func _ready() :
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	var movme_vector = get_vactor_to_player()
 	velocity = movme_vector * MAX_SPEED
@@ -20,5 +21,6 @@ func get_vactor_to_player():
 	return Vector2.ZERO
 	
 	
+@warning_ignore("unused_parameter")
 func on_area_enter(other_area : Area2D):
 	queue_free()
