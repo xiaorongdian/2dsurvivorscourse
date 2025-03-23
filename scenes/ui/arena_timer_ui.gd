@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	
 	
 func format_second_to_str(seconds :float):
-	var min = floori(seconds/ 60) 
-	var second = seconds - min * 60
-	return str(min) + ":" + ("%02d" % floor(second))
+	var mins = floori(seconds/ 60) 
+	var second = seconds - mins * 60
+	return str(mins) + ":" + ("%02d" % floor(second))
 	
