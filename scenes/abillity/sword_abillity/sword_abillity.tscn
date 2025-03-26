@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvfy6ycfaq48i"]
+[gd_scene load_steps=8 format=3 uid="uid://cvfy6ycfaq48i"]
 
 [ext_resource type="Texture2D" uid="uid://bkp1j00pdlqua" path="res://scenes/abillity/sword_abillity/sword.png" id="1_167x1"]
+[ext_resource type="Script" uid="uid://dbxyjeqdl0gnp" path="res://scenes/abillity/sword_abillity/sword_abillity.gd" id="1_ipmqv"]
+[ext_resource type="PackedScene" uid="uid://dy1nuhwq6x5ss" path="res://scenes/component/hitbox_component.tscn" id="1_mly1s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_167x1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipmqv"]
 size = Vector2(20, 28)
 
 [sub_resource type="Animation" id="Animation_mly1s"]
@@ -34,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/2/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -89,7 +91,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -106,14 +108,15 @@ _data = {
 }
 
 [node name="SwordAbillity" type="Node2D"]
+script = ExtResource("1_ipmqv")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HitboxComponent" parent="." instance=ExtResource("1_mly1s")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 light_mask = 4
 visibility_layer = 4
 position = Vector2(10, 0)
-shape = SubResource("RectangleShape2D_167x1")
+shape = SubResource("RectangleShape2D_ipmqv")
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

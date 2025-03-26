@@ -1,6 +1,8 @@
 extends Node
 
 const MAX_RANGE = 150
+var damage = 5
+
 @export var sword_abillity: PackedScene
 
 # Called when the node enters the scene tree for the first time.
@@ -32,8 +34,11 @@ func on_timer_timeout():
 		return a_position < b_position
 		)
 	
-	var sword_instance = sword_abillity.instantiate() as Node2D
+	var sword_instance = sword_abillity.instantiate() as SwordAbillity
 	player.get_parent().add_child(sword_instance)
+	sword_instance.hitbox_component.damage = damage
+	
+	#随机转个角度
 	sword_instance.global_position = enemies[0].global_position
 	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
 	
