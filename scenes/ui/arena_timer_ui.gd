@@ -1,11 +1,11 @@
 extends CanvasLayer
-
+#上面的时间计时ui
 @export var arena_timer_manager : Node
 @onready var label = $%Label
 
 
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func _process(delta: float) -> void:
 	if(null == arena_timer_manager):

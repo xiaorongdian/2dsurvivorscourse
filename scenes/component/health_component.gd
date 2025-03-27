@@ -14,7 +14,6 @@ func _ready() -> void:
 
 func damage(damage_amount: float):
 	current_health = max(current_health - damage_amount, 0)
-	print("剩余生命",current_health)
 	if(current_health == 0):
 		died.emit()
 		owner.queue_free()
