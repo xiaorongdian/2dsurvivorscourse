@@ -3,7 +3,7 @@ extends Node
 const MAX_RANGE = 150
 var damage = 10
 
-@export var sword_abillity: PackedScene
+@export var sword_ability: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,7 +34,7 @@ func on_timer_timeout():
 		return a_position < b_position
 		)
 	
-	var sword_instance = sword_abillity.instantiate() as SwordAbillity
+	var sword_instance = sword_ability.instantiate() as SwordAbility
 	player.get_parent().add_child(sword_instance)
 	sword_instance.hitbox_component.damage = damage
 	

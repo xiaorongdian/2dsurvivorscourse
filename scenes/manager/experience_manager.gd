@@ -8,7 +8,7 @@ signal level_up(new_level : int)
 
 const EXPERIENCE_GROW = 5 # 每级经验条增加
 
-var target_experience = 5 
+var target_experience = 1 
 var current_experience = 0
 var current_level = 1
 

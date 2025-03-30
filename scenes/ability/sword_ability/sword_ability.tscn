@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cvfy6ycfaq48i"]
 
-[ext_resource type="Texture2D" uid="uid://bkp1j00pdlqua" path="res://scenes/abillity/sword_abillity/sword.png" id="1_167x1"]
-[ext_resource type="Script" uid="uid://dbxyjeqdl0gnp" path="res://scenes/abillity/sword_abillity/sword_abillity.gd" id="1_ipmqv"]
+[ext_resource type="Texture2D" uid="uid://bkp1j00pdlqua" path="res://scenes/ability/sword_ability/sword.png" id="1_167x1"]
+[ext_resource type="Script" uid="uid://dbxyjeqdl0gnp" path="res://scenes/ability/sword_ability/sword_ability.gd" id="1_ipmqv"]
 [ext_resource type="PackedScene" uid="uid://dy1nuhwq6x5ss" path="res://scenes/component/hitbox_component.tscn" id="1_mly1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipmqv"]
@@ -107,7 +107,7 @@ _data = {
 &"swing": SubResource("Animation_167x1")
 }
 
-[node name="SwordAbillity" type="Node2D"]
+[node name="SwordAbility" type="Node2D"]
 script = ExtResource("1_ipmqv")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("1_mly1s")]
