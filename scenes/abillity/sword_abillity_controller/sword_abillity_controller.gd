@@ -1,7 +1,7 @@
 extends Node
 
 const MAX_RANGE = 150
-var damage = 5
+var damage = 10
 
 @export var sword_abillity: PackedScene
 
