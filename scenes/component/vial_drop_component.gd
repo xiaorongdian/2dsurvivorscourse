@@ -23,7 +23,10 @@ func on_died():
 	#怪当前位置
 	var spawn_position = (owner as Node2D).global_position
 	var vail_scene = vail_scene.instantiate() as Node2D
+	#用下面的方法报错
 	#owner.get_parent().add_child(vail_scene)
+	#用下面的方法不好使
 	#owner.get_parent().set_deferred("add_child", vail_scene)
+	#用下面的方法不报错
 	owner.get_parent().call_deferred("add_child", vail_scene)
 	vail_scene.global_position = spawn_position

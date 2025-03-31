@@ -9,3 +9,4 @@ sword_ability = ExtResource("2_pu37i")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
+autostart = true

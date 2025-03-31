@@ -1,9 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://deq2xsafmtm11"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://deq2xsafmtm11"]
 
 [ext_resource type="Script" uid="uid://cwkwadvqqxnwo" path="res://resources/upgrade/ability_upgratde.gd" id="1_ncgfa"]
 
 [resource]
 script = ExtResource("1_ncgfa")
-id = "sword_rade"
+id = "sword_rate"
 name = "Sword Quickness"
 description = "剑的频率，增加10%"

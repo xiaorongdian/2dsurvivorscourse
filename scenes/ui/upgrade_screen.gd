@@ -21,5 +21,7 @@ func set_ability_upgrades(upgrades: Array[AbilityUpgrade]):
 	
 func on_upgrade_selected(upgrade : AbilityUpgrade):
 	upgrade_selected.emit(upgrade)
+	get_tree().paused = false
+	queue_free()
 	
 	
