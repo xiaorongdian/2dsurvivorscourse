@@ -35,6 +35,8 @@ window/stretch/mode="viewport"
 
 player=""
 enemy=""
+entities_layer=""
+foreground_layer=""
 
 [input]
 

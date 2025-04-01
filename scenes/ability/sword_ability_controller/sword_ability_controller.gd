@@ -31,7 +31,9 @@ func on_timer_timeout():
 		)
 	
 	var sword_instance = sword_ability.instantiate() as SwordAbility
-	player.get_parent().add_child(sword_instance)
+	var forground_layer = get_tree().get_first_node_in_group("foreground_layer")
+	forground_layer.add_child(sword_instance)
+	#player.get_parent().add_child(sword_instance)
 	sword_instance.hitbox_component.damage = damage
 	
 	#随机转个角度
@@ -47,6 +49,5 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Diction
 		return
 	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
 	base_wait_time *= 1 - percent_reduction
-	print("base_wait_time:", base_wait_time)
 	$Timer.wait_time = base_wait_time
 	$Timer.start()
