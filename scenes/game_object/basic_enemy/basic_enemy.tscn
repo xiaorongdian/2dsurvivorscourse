@@ -8,14 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://bmccufxtk4ga4" path="res://scenes/component/hurtbox_component.tscn" id="5_bq7hi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkye5"]
-radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fng3e"]
 radius = 6.08276
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(24, 14)
-collision_layer = 0
+collision_layer = 8
+collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_gxg7h")
 
