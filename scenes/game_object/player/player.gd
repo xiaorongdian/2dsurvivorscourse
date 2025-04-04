@@ -5,13 +5,17 @@ const JIA_SU_PING_HUA = 25 #角色移动缓冲加速粒度
 var number_colliding_bodies = 0 #当前有几个敌人在碰撞区内
 
 @onready var damage_interval_timer = $DamageIntervalTimer
+@onready var health_component = $HealthComponent
+@onready var health_bar = $HealthBar
 
 
 func _ready() -> void:
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
-	
+	health_component.health_changed.connect(on_health_changed)
+	update_health_display()
+
 
 func _process(delta: float) -> void:
 	var movme_vector = get_movment_vector()
@@ -32,15 +36,18 @@ func get_movment_vector():
 func check_deal_damage():
 	if number_colliding_bodies == 0 || !damage_interval_timer.is_stopped():
 		return
-	$HealthComponent.damage(1)
+	health_component.damage(1)
 	damage_interval_timer.start()
 
+
+func update_health_display():
+	health_bar.value = health_component.get_health_percent()
 
 func on_body_entered(other_body: Node2D):
 	#碰撞取内敌人+1
 	number_colliding_bodies += 1
 	check_deal_damage()
-	
+
 	
 func on_body_exited(other_body: Node2D):
 	number_colliding_bodies -= 1
@@ -49,3 +56,7 @@ func on_body_exited(other_body: Node2D):
 
 func on_damage_interval_timer_timeout():
 	check_deal_damage()
+
+
+func on_health_changed():
+	update_health_display()

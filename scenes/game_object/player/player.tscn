@@ -1,18 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://b18o0gkulxfsp"]
+[gd_scene load_steps=10 format=3 uid="uid://b18o0gkulxfsp"]
 
 [ext_resource type="Texture2D" uid="uid://djictqy0tyt7o" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://cwqc58gw2yvvg" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://bt7qjoy5mv40h" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://cxm8ccp38p802" path="res://scenes/component/health_component.tscn" id="2_ss5pk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
-radius = 5.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ss5pk"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj6oj"]
+bg_color = Color(0.262745, 0.882353, 0.701961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tj6oj"]
 radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s3670"]
 radius = 23.0217
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
+radius = 5.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(307, 169)
@@ -30,15 +41,26 @@ script = ExtResource("1_dovo2")
 wait_time = 0.5
 one_shot = true
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(32, 6)
+offset_left = -16.0
+offset_top = -17.0
+offset_right = 16.0
+offset_bottom = -11.0
+pivot_offset = Vector2(16, 3)
+theme_override_styles/background = SubResource("StyleBoxFlat_ss5pk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tj6oj")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 5)
 texture = ExtResource("1_8afob")
 offset = Vector2(0, -8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_8afob")
-
 [node name="CollisionArea2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -46,8 +68,15 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_tj6oj")
 
 [node name="PickUp" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUp"]
+visible = false
+position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_s3670")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_8afob")
