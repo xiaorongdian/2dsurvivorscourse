@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 const MAX_SPEED = 125
 const JIA_SU_PING_HUA = 25 #角色移动缓冲加速粒度
