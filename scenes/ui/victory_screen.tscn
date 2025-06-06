@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://buxqbarvrdt82"]
 
-[ext_resource type="Script" uid="uid://bui1p707j78o8" path="res://scenes/ui/end_screen.gd" id="1_dtet5"]
+[ext_resource type="Script" uid="uid://bui1p707j78o8" path="res://scenes/ui/victory_screen.gd" id="1_dtet5"]
 
-[node name="EndScreen" type="CanvasLayer"]
+[node name="VictoryScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_dtet5")
 

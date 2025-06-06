@@ -2,10 +2,10 @@ extends Node
 
 #地图难度提升信号
 signal arena_difficulty_increased(arena_difficulty: int)
-
+#每5秒升一级
 const DIFFICULTY_INTERVAL = 5
 
-@export var end_screen_scene: PackedScene
+@export var victory_screen_scene: PackedScene
 
 @onready var timer = $Timer
 
@@ -18,17 +18,18 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	#下一个难度提升的时间点 每次提升时间间隔缩短
+	#每5秒升一级
 	var next_timer_target = timer.wait_time - ((arena_difficulty + 1) * DIFFICULTY_INTERVAL)
+	
 	if timer.time_left <= next_timer_target:
 		arena_difficulty += 1
 		arena_difficulty_increased.emit(arena_difficulty)
-		
+	
 
 func get_time_elapsed():
 	return $Timer.wait_time - $Timer.time_left
 
 
 func on_timer_timeout():
-	var end_screen_instance = end_screen_scene.instantiate()
-	add_child(end_screen_instance)
+	var victory_screen_scene_instance = victory_screen_scene.instantiate()
+	add_child(victory_screen_scene_instance)
