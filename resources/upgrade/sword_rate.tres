@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_ncgfa")
 id = "sword_rate"
-name = "Sword Quickness"
+name = "速度-剑"
 description = "剑的频率，增加10%"

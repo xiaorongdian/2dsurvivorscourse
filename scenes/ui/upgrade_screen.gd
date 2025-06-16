@@ -13,9 +13,12 @@ func _ready() -> void:
 
 
 func set_ability_upgrades(upgrades: Array[AbilityUpgrade]):
+	#将能力加到UI
 	for upgrade in upgrades:
 		var card_instance = upgrade_scene.instantiate()
+		#先把能力加场景树中 与设置文本不能颠倒顺序
 		card_container.add_child(card_instance)
+		#设置文本
 		card_instance.set_ability_upgrade(upgrade)
 		card_instance.selected.connect(on_upgrade_selected.bind(upgrade))
 	
