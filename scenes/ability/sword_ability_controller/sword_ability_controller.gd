@@ -31,6 +31,7 @@ func on_timer_timeout():
 		)
 	
 	var sword_instance = sword_ability.instantiate() as SwordAbility
+	#弄一个主场景节点统一管理游戏中临时生成的child
 	var forground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	forground_layer.add_child(sword_instance)
 	#player.get_parent().add_child(sword_instance)
@@ -44,10 +45,11 @@ func on_timer_timeout():
 	sword_instance.rotation = enemy_position.angle()
 	
 	
+#升级剑时
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id != "sword_rate":
 		return
 	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
 	base_wait_time *= 1 - percent_reduction
-	$Timer.wait_time = base_wait_time
+	$Timer.wait_time = max(base_wait_time, 0.1)
 	$Timer.start()
