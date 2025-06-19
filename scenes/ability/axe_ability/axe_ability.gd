@@ -18,6 +18,7 @@ func _ready() -> void:
 	#tween运行完调用，使斧头消失
 	tween.tween_callback(queue_free)
 
+
 func tween_method(rotations: float):
 	#旋转百分比 2是我们最大值 rotations 在2秒内从0增长到2
 	var percent = rotations / 2

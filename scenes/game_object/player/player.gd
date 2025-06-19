@@ -65,7 +65,7 @@ func check_deal_damage():
 	damage_interval_timer.start()
 
 
-#更细一下hp显示
+#更新一下hp显示
 func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 
