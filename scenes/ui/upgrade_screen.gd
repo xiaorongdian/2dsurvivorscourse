@@ -12,6 +12,7 @@ func _ready() -> void:
 	get_tree().paused = true
 
 
+#能力加到UI中
 func set_ability_upgrades(upgrades: Array[AbilityUpgrade]):
 	#将能力加到UI
 	for upgrade in upgrades:

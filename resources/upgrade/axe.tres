@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dd4d8cb53vjxq"]
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://dd4d8cb53vjxq"]
 
 [ext_resource type="PackedScene" uid="uid://kobi6j7ix2jp" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_ijfh3"]
 [ext_resource type="Script" uid="uid://dnlgkcji75y4a" path="res://resources/upgrade/ability.gd" id="2_etnh4"]
@@ -7,5 +7,6 @@
 script = ExtResource("2_etnh4")
 ability_controller_scene = ExtResource("1_ijfh3")
 id = "axe"
+max_quantity = 1
 name = "斧子"
 description = "获得能力：释放一个旋转斧子"
