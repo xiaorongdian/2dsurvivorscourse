@@ -5,10 +5,19 @@ const MAX_SPEED = 125
 const JIA_SU_PING_HUA = 25 #角色移动缓冲加速粒度
 var number_colliding_bodies = 0 #当前有几个敌人在碰撞区内
 
+#受伤定时器
 @onready var damage_interval_timer = $DamageIntervalTimer
+#hp组件
 @onready var health_component = $HealthComponent
+#hpUI
 @onready var health_bar = $HealthBar
+#能力
 @onready var abilities = $Abilitise
+#动画
+@onready var animation_player = $AnimationPlayer
+#翻转
+@onready var visuals = $Visuals
+
 
 func _ready() -> void:
 	$CollisionArea2D.body_entered.connect(on_body_entered)
@@ -20,15 +29,28 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	var movme_vector = get_movment_vector()
-	var direction = movme_vector.normalized()
+	var movement_vector = get_movment_vector()
+	var direction = movement_vector.normalized()
 	var target_velocity = direction * MAX_SPEED
 	#平滑跟随移动
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * JIA_SU_PING_HUA))
 	
 	move_and_slide()
-
-
+	
+	if movement_vector.x != 0 || movement_vector.y != 0:
+		animation_player.play("walk")
+	else:
+		animation_player.play("RESET")
+	
+	var move_sign = sign(movement_vector.x)
+	if move_sign == 0:
+		#如果x轴不移动则保持朝向
+		return
+	else:
+		#x轴正向移动就是1,1 反方向就是 -1,1 ，反方向纹理和动画就翻转
+		visuals.scale = Vector2(move_sign, 1)
+		
+		
 func get_movment_vector():
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left");
 	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
