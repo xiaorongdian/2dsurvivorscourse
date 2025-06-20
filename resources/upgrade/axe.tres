@@ -8,5 +8,6 @@ script = ExtResource("2_etnh4")
 ability_controller_scene = ExtResource("1_ijfh3")
 id = "axe"
 max_quantity = 1
-name = "斧子"
-description = "获得能力：释放一个旋转斧子"
+name = "能力-斧子"
+description = "获得能力：
+释放斧子"

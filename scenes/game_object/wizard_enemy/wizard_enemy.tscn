@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4mad3tyoy3e3"]
+
+[ext_resource type="PackedScene" uid="uid://cxm8ccp38p802" path="res://scenes/component/health_component.tscn" id="1_4jk3l"]
+[ext_resource type="Texture2D" uid="uid://bdxpfiqa36bg4" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="1_43j36"]
+[ext_resource type="Script" uid="uid://bdgbkeegrt6p2" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_qct4f"]
+[ext_resource type="PackedScene" uid="uid://xynltio0cny4" path="res://scenes/component/death_component.tscn" id="2_865ah"]
+[ext_resource type="PackedScene" uid="uid://ej3mggt50ceo" path="res://scenes/component/velocity_component.tscn" id="2_qgqx6"]
+[ext_resource type="PackedScene" uid="uid://bmccufxtk4ga4" path="res://scenes/component/hurtbox_component.tscn" id="4_865ah"]
+[ext_resource type="PackedScene" uid="uid://c0nawp1nhvd43" path="res://scenes/component/vial_drop_component.tscn" id="4_rquut"]
+[ext_resource type="PackedScene" uid="uid://cy12g26ysdlwk" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="5_sjtyn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgqx6"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qct4f"]
+radius = 4.0
+
+[node name="WizardEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_qct4f")
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_4jk3l")]
+max_health = 30.0
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_qgqx6")]
+max_speed = 60
+acceleration = 2.0
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_rquut")]
+health_component = NodePath("../HealthComponent")
+vail_scene = ExtResource("5_sjtyn")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_865ah")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="hurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_865ah")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponent"]
+light_mask = 0
+visibility_layer = 4
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_qgqx6")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(0, -8)
+texture = ExtResource("1_43j36")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_qct4f")
