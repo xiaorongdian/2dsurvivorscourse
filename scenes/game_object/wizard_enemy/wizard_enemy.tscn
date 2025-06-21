@@ -21,10 +21,9 @@ collision_mask = 8
 script = ExtResource("1_qct4f")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_4jk3l")]
-max_health = 30.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_qgqx6")]
-max_speed = 60
+max_speed = 30
 acceleration = 2.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_rquut")]

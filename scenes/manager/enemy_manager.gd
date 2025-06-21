@@ -3,15 +3,23 @@ extends Node
 # 最大向量半径
 const MAX_RANGE = 375
 
+#基础敌人-老鼠
 @export var base_enemy_scene : PackedScene
+#巫师
+@export var wizard_enemy_scene : PackedScene
+#地图时间
 @export var arena_time_manager: Node
 
 @onready var timer = $Timer
 
+#重生时间
 var base_spaw_time = 0
+#怪权重表
+var enemy_table = WeightedTable.new()
 
 
 func _ready() -> void:
+	enemy_table.add_item(base_enemy_scene, 10)
 	timer.timeout.connect(on_timer_timeout)
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_spaw_time = timer.wait_time
@@ -47,8 +55,11 @@ func on_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if(null == player):
 		return
-
-	var enemy = base_enemy_scene.instantiate() as Node2D
+	
+	#从敌人权重表取
+	var enemy_scene = enemy_table.pick_item()
+	var enemy = enemy_scene.instantiate() as Node2D
+	
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 	entities_layer.add_child(enemy)
 	# 将随机向量加到敌人身上。
@@ -60,3 +71,7 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 	var time_off = ( .1 / 12 ) * arena_difficulty
 	time_off = min(.9, time_off)
 	timer.wait_time = base_spaw_time - time_off
+	
+	#地图难度6时出现巫师敌人，5秒1级就是30秒
+	if arena_difficulty == 6:
+		enemy_table.add_item(wizard_enemy_scene, 20)

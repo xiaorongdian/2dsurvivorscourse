@@ -99,6 +99,7 @@ vail_scene = ExtResource("4_elloc")
 exp_range = 0.35
 
 [node name="VelocityComponent" parent="." instance=ExtResource("5_v58qd")]
+max_speed = 60
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_jkye5")]
 health_component = NodePath("../HealthComponent")
