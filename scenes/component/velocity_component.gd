@@ -25,10 +25,15 @@ func accelereate_to_playerr():
 	accelerate_in_direction(direction)
 	
 	
-#在某个方向上加速更新速度
+#在某个方向上更新速度
 func accelerate_in_direction(direction:Vector2):
 	var desired_velocity = direction * max_speed
 	velocity = velocity.lerp(desired_velocity, 1 - exp(- acceleration * get_process_delta_time()))
+
+
+#减速函数
+func decelerate():
+	accelerate_in_direction(Vector2.ZERO)
 
 
 #移动
