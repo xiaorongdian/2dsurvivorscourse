@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc7kgtkhrr5l4"]
+[gd_scene load_steps=17 format=3 uid="uid://dc7kgtkhrr5l4"]
 
 [ext_resource type="Texture2D" uid="uid://digi6ufoox3ni" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_fng3e"]
 [ext_resource type="Script" uid="uid://bns7ujtht4bw7" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_gxg7h"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bmccufxtk4ga4" path="res://scenes/component/hurtbox_component.tscn" id="5_bq7hi"]
 [ext_resource type="PackedScene" uid="uid://xynltio0cny4" path="res://scenes/component/death_component.tscn" id="5_jkye5"]
 [ext_resource type="PackedScene" uid="uid://ej3mggt50ceo" path="res://scenes/component/velocity_component.tscn" id="5_v58qd"]
+[ext_resource type="PackedScene" uid="uid://5soxbq72kjwl" path="res://scenes/component/hit_flash_component.tscn" id="6_t4oqy"]
+[ext_resource type="Shader" uid="uid://cacol6amg77uo" path="res://scenes/component/hit_flash_component.gdshader" id="7_yyp5f"]
 
 [sub_resource type="Animation" id="Animation_jkye5"]
 length = 0.001
@@ -72,6 +74,11 @@ _data = {
 &"walk": SubResource("Animation_bq7hi")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrmcc"]
+resource_local_to_scene = true
+shader = ExtResource("7_yyp5f")
+shader_parameter/lerp_percent = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkye5"]
 radius = 11.0
 
@@ -100,6 +107,11 @@ exp_range = 0.35
 
 [node name="VelocityComponent" parent="." instance=ExtResource("5_v58qd")]
 max_speed = 60
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_t4oqy")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_nrmcc")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_jkye5")]
 health_component = NodePath("../HealthComponent")

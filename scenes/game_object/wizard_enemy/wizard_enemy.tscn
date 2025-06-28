@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4mad3tyoy3e3"]
+[gd_scene load_steps=15 format=3 uid="uid://b4mad3tyoy3e3"]
 
 [ext_resource type="PackedScene" uid="uid://cxm8ccp38p802" path="res://scenes/component/health_component.tscn" id="1_4jk3l"]
 [ext_resource type="Texture2D" uid="uid://bdxpfiqa36bg4" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="1_43j36"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bmccufxtk4ga4" path="res://scenes/component/hurtbox_component.tscn" id="4_865ah"]
 [ext_resource type="PackedScene" uid="uid://c0nawp1nhvd43" path="res://scenes/component/vial_drop_component.tscn" id="4_rquut"]
 [ext_resource type="PackedScene" uid="uid://cy12g26ysdlwk" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="5_sjtyn"]
+[ext_resource type="PackedScene" uid="uid://5soxbq72kjwl" path="res://scenes/component/hit_flash_component.tscn" id="6_h4ano"]
 
 [sub_resource type="Animation" id="Animation_74qiw"]
 length = 0.001
@@ -139,6 +140,10 @@ acceleration = 200.0
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_rquut")]
 health_component = NodePath("../HealthComponent")
 vail_scene = ExtResource("5_sjtyn")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_h4ano")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_865ah")]
 health_component = NodePath("../HealthComponent")

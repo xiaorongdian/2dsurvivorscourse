@@ -1,7 +1,7 @@
 extends Node
 
 const MAX_RANGE = 150
-var damage = 10
+var damage = 5
 var base_wait_time
 
 @export var sword_ability: PackedScene
