@@ -1,15 +1,18 @@
 extends Node
 
 const MAX_RANGE = 150
-var damage = 5
+#基础伤害
+var base_damage = 5
+#伤害增长百分比 从1开始
+var additional_damage_percent = 1
 var base_wait_time
 
 @export var sword_ability: PackedScene
 
 func _ready() -> void:
+	base_wait_time = $Timer.wait_time
 	$Timer.timeout.connect(on_timer_timeout)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
-	base_wait_time = $Timer.wait_time
 
 
 func on_timer_timeout():
@@ -34,8 +37,8 @@ func on_timer_timeout():
 	#弄一个主场景节点统一管理游戏中临时生成的child
 	var forground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	forground_layer.add_child(sword_instance)
-	#player.get_parent().add_child(sword_instance)
-	sword_instance.hitbox_component.damage = damage
+	#伤害=基础 * 百分比
+	sword_instance.hitbox_component.damage = base_damage * additional_damage_percent
 	
 	#随机转个角度
 	sword_instance.global_position = enemies[0].global_position
@@ -47,9 +50,10 @@ func on_timer_timeout():
 	
 #升级剑时
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	if upgrade.id != "sword_rate":
-		return
-	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
-	base_wait_time *= 1 - percent_reduction
-	$Timer.wait_time = max(base_wait_time, 0.1)
-	$Timer.start()
+	if upgrade.id == "sword_rate":
+		var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
+		base_wait_time *= 1 - percent_reduction
+		$Timer.wait_time = max(base_wait_time, 0.1)
+		$Timer.start()
+	elif upgrade.id == "sword_damage":
+		additional_damage_percent = 1 + current_upgrades["sword_damage"]["quantity"] * .15

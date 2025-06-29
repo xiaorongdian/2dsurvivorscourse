@@ -1,17 +1,27 @@
 extends Node
 
-#升级能力池
-@export var upgrade_pool:Array[AbilityUpgrade]
 #经验管理
 @export var experience_manager: Node
 #升级场景
 @export var upgrade_screen_scene: PackedScene
 
 #当前拥有的能力
-var current_upgrades = {
-}
+var current_upgrades = {}
+
+#升级能力池
+var upgrade_pool:WeightedTable = WeightedTable.new()
+
+#预加载能力资源
+var upgrade_axe = preload("res://resources/upgrade/axe.tres")
+var upgrade_axe_damage = preload("res://resources/upgrade/axe_damage.tres")
+var upgrade_sword_rate = preload("res://resources/upgrade/sword_rate.tres")
+var upgrade_sword_damage = preload("res://resources/upgrade/sword_damage.tres")
+
 
 func _ready():
+	upgrade_pool.add_item(upgrade_axe, 10)
+	upgrade_pool.add_item(upgrade_sword_rate, 10)
+	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	experience_manager.level_up.connect(on_level_up)
 
 
@@ -29,23 +39,30 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 	if upgrade.max_quantity > 0:
 		var current_quantity = current_upgrades[upgrade.id]["quantity"]
 		if current_quantity == upgrade.max_quantity:
-			upgrade_pool = upgrade_pool.filter(func (pool_upgrade): return pool_upgrade.id != upgrade.id)
+			upgrade_pool.remove_item(upgrade)
+	
+	update_upgrade_pool(upgrade)
 	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
+
+
+#修正一下升级能力池
+func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
+	#如果选择了获得斧头能力，则升级池中加入斧头伤害增加的选项
+	if chosen_upgrade.id == upgrade_axe.id:
+		upgrade_pool.add_item(upgrade_axe_damage, 10)
 
 
 #选择升级时显示的类目
 func pick_upgrades():
 	var chosen_upgrades:Array[AbilityUpgrade] = []
-	#复制一个新的数组，不影响原数组
-	var filtered_upgrades = upgrade_pool.duplicate()
-	for i in 2:
-		if filtered_upgrades.size() == 0:
+	for i in 3:
+		#如果池子里的数量与选择的数量相同
+		if upgrade_pool.items.size() == chosen_upgrades.size():
 			break
 		#随机选一个能力在屏幕显示
-		var chosen_upgrade = filtered_upgrades.pick_random() as AbilityUpgrade
+		var chosen_upgrade = upgrade_pool.pick_item(chosen_upgrades) as AbilityUpgrade
 		chosen_upgrades.append(chosen_upgrade)
-		#过滤 遍历一下返回true就保留下来 Lambda 表达式
-		filtered_upgrades = filtered_upgrades.filter(func (upgrade): return upgrade.id != chosen_upgrade.id)
+		
 	return chosen_upgrades
 
 
