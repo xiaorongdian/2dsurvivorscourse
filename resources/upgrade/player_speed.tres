@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://cq3jxcey3yfgt"]
+
+[ext_resource type="Script" uid="uid://cwkwadvqqxnwo" path="res://resources/upgrade/ability_upgratde.gd" id="1_yda4q"]
+
+[resource]
+script = ExtResource("1_yda4q")
+id = "player_speed"
+max_quantity = 2
+name = "速度-玩家"
+description = "增加移动速度10%"

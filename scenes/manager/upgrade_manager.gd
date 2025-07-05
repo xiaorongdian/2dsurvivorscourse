@@ -12,16 +12,24 @@ var current_upgrades = {}
 var upgrade_pool:WeightedTable = WeightedTable.new()
 
 #预加载能力资源
+#能力-斧
 var upgrade_axe = preload("res://resources/upgrade/axe.tres")
+#伤害-斧
 var upgrade_axe_damage = preload("res://resources/upgrade/axe_damage.tres")
+#速度-剑
 var upgrade_sword_rate = preload("res://resources/upgrade/sword_rate.tres")
+#伤害剑
 var upgrade_sword_damage = preload("res://resources/upgrade/sword_damage.tres")
+#速度-玩家
+var upgrade_player_speed = preload("res://resources/upgrade/player_speed.tres")
 
 
 func _ready():
+	#放到池子里
 	upgrade_pool.add_item(upgrade_axe, 10)
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
+	upgrade_pool.add_item(upgrade_player_speed, 5)
 	experience_manager.level_up.connect(on_level_up)
 
 
