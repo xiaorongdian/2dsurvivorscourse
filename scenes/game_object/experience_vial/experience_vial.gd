@@ -32,6 +32,7 @@ func collect():
 	queue_free()
 
 
+#区域被进入
 func on_area_enter(other_area: Area2D):
 	#延迟调用使碰撞形状失效，目的不会多次碰撞。
 	Callable(disable_collision).call_deferred()
@@ -48,4 +49,4 @@ func on_area_enter(other_area: Area2D):
 	#后的tween串行
 	tween.chain()
 	tween.tween_callback(collect)
-	
+	$RandomStreamPlayer2DComponent.play_random()

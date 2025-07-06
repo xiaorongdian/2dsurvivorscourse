@@ -167,10 +167,10 @@ sprite = NodePath("../Visuals/Sprite2D")
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 texture = ExtResource("1_43j36")
 
-[node name="hurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_865ah")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_865ah")]
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 visible = false
 light_mask = 0
 visibility_layer = 4
