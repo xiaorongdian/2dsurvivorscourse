@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctbs2p6gl4ipt"]
+
+[ext_resource type="AudioStream" uid="uid://d3eiaelfmgd2i" path="res://assets/audio/Bit Bit Loop.mp3" id="1_xlf3v"]
+[ext_resource type="Script" uid="uid://cj5k0qawp7en2" path="res://scenes/autoload/music_player.gd" id="2_xlf3v"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_xlf3v")
+volume_db = -25.0
+autoplay = true
+script = ExtResource("2_xlf3v")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true

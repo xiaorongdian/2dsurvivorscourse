@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="2DSurvivorsCourse"
-run/main_scene="uid://donw2kh27h1an"
+run/main_scene="uid://ds8dh3g6rapii"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameEvents="*res://scenes/autoload/game_events.tscn"
+MusicPlayer="*res://scenes/autoload/music_player.tscn"
 
 [debug]
 

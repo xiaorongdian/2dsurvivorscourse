@@ -17,7 +17,16 @@ func _ready() -> void:
 	$%QuitButton.pressed.connect(on_quit_button_pressed)
 
 
+func play_jingle(defeat: bool = false):
+	if defeat:
+		MusicPlayer.stop()
+		$DefeatPlayerComponent.play_random()
+	else:
+		$VictoryPlayerComponent.play_random()	
+	
+
 func set_defeat():
+	play_jingle(true)
 	$%TitleLabel.text = "失败"
 	$%DescriptionLabel.text = "差一点就成功啦!"
 

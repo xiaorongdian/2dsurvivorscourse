@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://buxqbarvrdt82"]
+[gd_scene load_steps=10 format=3 uid="uid://buxqbarvrdt82"]
 
 [ext_resource type="Script" uid="uid://bui1p707j78o8" path="res://scenes/ui/victory_screen.gd" id="1_dtet5"]
 [ext_resource type="PackedScene" uid="uid://b2ixartt2giu2" path="res://scenes/ui/sound_button.tscn" id="2_lcvyk"]
+[ext_resource type="PackedScene" uid="uid://twf6g12pmaov" path="res://scenes/component/random_stream_player_component.tscn" id="2_mtfol"]
+[ext_resource type="AudioStream" uid="uid://ckpwl6p0gmbpe" path="res://assets/audio/jingles_defeat.ogg" id="3_1x1dp"]
+[ext_resource type="AudioStream" uid="uid://t3ua5v4xv1lc" path="res://assets/audio/jingles_victory.ogg" id="3_ndp4s"]
 
 [sub_resource type="Animation" id="Animation_bd1lb"]
 length = 0.001
@@ -62,6 +65,14 @@ _data = {
 [node name="VictoryScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_dtet5")
+
+[node name="VictoryPlayerComponent" parent="." instance=ExtResource("2_mtfol")]
+volume_db = -5.0
+streams = Array[AudioStream]([ExtResource("3_ndp4s")])
+
+[node name="DefeatPlayerComponent" parent="." instance=ExtResource("2_mtfol")]
+volume_db = -8.0
+streams = Array[AudioStream]([ExtResource("3_1x1dp")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,7 +1,7 @@
 extends Node
 
 # 最大向量半径
-const MAX_RANGE = 375
+const MAX_RANGE = 355
 
 #基础敌人-老鼠
 @export var base_enemy_scene : PackedScene
