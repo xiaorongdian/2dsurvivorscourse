@@ -26,7 +26,6 @@ func get_health_percent():
 	return min(current_health / max_health , 1)
 	
 
-
 func check_death():
 	if current_health == 0:
 		died.emit()

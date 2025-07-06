@@ -2,6 +2,9 @@ extends Area2D
 
 class_name HurtboxComponent
 
+#击中
+signal hited
+
 @export var health_component : Node
 
 #预加载场景，缺点是路径字符串常量是硬编码
@@ -12,6 +15,7 @@ func _ready() -> void:
 	area_entered.connect(on_area_entered)
 
 
+#击中
 func on_area_entered(other_area: Node2D):
 	if not other_area is HitboxComponent:
 		return
@@ -32,3 +36,5 @@ func on_area_entered(other_area: Node2D):
 	if round(hitbox_component.damage) == hitbox_component.damage:
 		format_string = "%0.0f"
 	floating_text.start(format_string % hitbox_component.damage)
+	
+	hited.emit()

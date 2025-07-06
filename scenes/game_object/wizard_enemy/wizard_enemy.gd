@@ -8,6 +8,11 @@ extends CharacterBody2D
 #是否移动
 var is_move = false
 
+
+func _ready() -> void:
+	$HurtboxComponent.hited.connect(on_hit)
+	
+	
 func _process(delta: float) -> void:
 	if is_move:
 		velocity_component.accelereate_to_playerr()
@@ -24,3 +29,8 @@ func _process(delta: float) -> void:
 
 func set_is_moving(moving: bool):
 	is_move = moving
+	
+	
+#命中时
+func on_hit():
+	$HitRandomAudioPlayerComponent.play_random()

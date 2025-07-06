@@ -23,3 +23,4 @@ func on_died():
 	#entities.add_child(self)
 	#global_position = spawn_position
 	$AnimationPlayer.play("defalut")
+	$HitRandomAudioPlayerComponent.play_random()
