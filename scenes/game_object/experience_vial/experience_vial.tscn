@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://vrkbevt6gw87" path="res://scenes/game_object/experience_vial/experience_vial.gd" id="1_jmuu1"]
 [ext_resource type="Texture2D" uid="uid://bkoci6fp4urol" path="res://scenes/game_object/experience_vial/tile_0126.png" id="1_krkhv"]
 [ext_resource type="PackedScene" uid="uid://deek1n1ds5r0y" path="res://scenes/component/random_stream_player_2d_component.tscn" id="2_4w5ru"]
-[ext_resource type="AudioStream" uid="uid://bxxg2pjbhp7tn" path="res://assets/audio/impactGeneric_light_000.ogg" id="3_2rrn7"]
-[ext_resource type="AudioStream" uid="uid://cvesym3qlpetu" path="res://assets/audio/impactGeneric_light_001.ogg" id="4_3wn1x"]
-[ext_resource type="AudioStream" uid="uid://dkmhk35w2yjjh" path="res://assets/audio/impactGeneric_light_002.ogg" id="5_bscgk"]
-[ext_resource type="AudioStream" uid="uid://mtird3roknxq" path="res://assets/audio/impactGeneric_light_003.ogg" id="6_r5rcv"]
-[ext_resource type="AudioStream" uid="uid://b36jjyljj0f4g" path="res://assets/audio/impactGeneric_light_004.ogg" id="7_lv4lq"]
+[ext_resource type="AudioStream" uid="uid://da443qikle2ii" path="res://assets/audio/impactGlass_light_000.ogg" id="3_4w5ru"]
+[ext_resource type="AudioStream" uid="uid://bj2s4mp4vmk1w" path="res://assets/audio/impactGlass_light_001.ogg" id="4_2rrn7"]
+[ext_resource type="AudioStream" uid="uid://bjq18ivaisdui" path="res://assets/audio/impactGlass_light_002.ogg" id="5_3wn1x"]
+[ext_resource type="AudioStream" uid="uid://b2c27x6guodri" path="res://assets/audio/impactGlass_light_003.ogg" id="6_bscgk"]
+[ext_resource type="AudioStream" uid="uid://cmm7spy7jbwt5" path="res://assets/audio/impactGlass_light_004.ogg" id="7_r5rcv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_krkhv"]
 radius = 8.0
@@ -16,7 +16,7 @@ radius = 8.0
 script = ExtResource("1_jmuu1")
 
 [node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("2_4w5ru")]
-streams = Array[AudioStream]([ExtResource("3_2rrn7"), ExtResource("4_3wn1x"), ExtResource("5_bscgk"), ExtResource("6_r5rcv"), ExtResource("7_lv4lq")])
+streams = Array[AudioStream]([ExtResource("3_4w5ru"), ExtResource("4_2rrn7"), ExtResource("5_3wn1x"), ExtResource("6_bscgk"), ExtResource("7_r5rcv")])
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

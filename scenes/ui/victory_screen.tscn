@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://buxqbarvrdt82"]
+[gd_scene load_steps=7 format=3 uid="uid://buxqbarvrdt82"]
 
 [ext_resource type="Script" uid="uid://bui1p707j78o8" path="res://scenes/ui/victory_screen.gd" id="1_dtet5"]
+[ext_resource type="PackedScene" uid="uid://b2ixartt2giu2" path="res://scenes/ui/sound_button.tscn" id="2_lcvyk"]
 
 [sub_resource type="Animation" id="Animation_bd1lb"]
 length = 0.001
@@ -125,12 +126,12 @@ text = "你获胜了！"
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ResartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="ResartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_lcvyk")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "重新开始"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_lcvyk")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "退出

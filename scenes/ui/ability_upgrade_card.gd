@@ -28,7 +28,6 @@ func play_discard():
 	$AnimationPlayer.play("discard")
 	
 
-
 #构造升级时卡片显示
 func set_ability_upgrade(upgrade: AbilityUpgrade):
 	name_label.text = upgrade.name

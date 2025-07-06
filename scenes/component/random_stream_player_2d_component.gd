@@ -1,5 +1,5 @@
 extends AudioStreamPlayer2D
-#音乐播放组件
+#音乐播放组件 随位置远近强弱发生变更
 
 #音乐组
 @export var streams: Array[AudioStream]
