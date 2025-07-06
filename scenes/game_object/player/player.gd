@@ -51,7 +51,8 @@ func _process(delta: float) -> void:
 		#x轴正向移动就是1,1 反方向就是 -1,1 ，反方向纹理和动画就翻转
 		visuals.scale = Vector2(move_sign, 1)
 		
-		
+
+#获取移动向量
 func get_movment_vector():
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left");
 	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -90,6 +91,7 @@ func on_damage_interval_timer_timeout():
 
 #当hp发生变化
 func on_health_changed():
+	GameEvents.emit_player_damaged()
 	update_health_display()
 
 
