@@ -46,7 +46,6 @@ func set_bus_volume_percent(bus_name: String, percent: float):
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	#线性值转分贝
 	var volume_db = linear_to_db(percent)
-	print("修改bus_index：",bus_index," 值：", volume_db)
 	AudioServer.set_bus_volume_db(bus_index, volume_db)
 
 	
@@ -61,7 +60,6 @@ func on_window_button_pressed():
 
 
 func on_audio_slider_changed(value: float, bus_name: String):
-	print("修改bus_name：",bus_name," 值：", value)
 	#设置声音，value提前设置正好是百分比
 	set_bus_volume_percent(bus_name, value)
 	

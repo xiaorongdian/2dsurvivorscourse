@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=4 uid="uid://oydenu1fn8tv"]
+[gd_scene load_steps=5 format=4 uid="uid://oydenu1fn8tv"]
 
 [ext_resource type="Script" uid="uid://p6r1se0nfcgn" path="res://scenes/ui/options_menu.gd" id="1_imaij"]
+[ext_resource type="PackedScene" uid="uid://rky0hwvpu8gw" path="res://scenes/ui/vignette.tscn" id="2_0ejsc"]
 [ext_resource type="TileSet" uid="uid://dxs8c4jgpx31q" path="res://resources/tileset.tres" id="2_c4822"]
 [ext_resource type="PackedScene" uid="uid://b2ixartt2giu2" path="res://scenes/ui/sound_button.tscn" id="3_0ejsc"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 script = ExtResource("1_imaij")
+
+[node name="Vignette" parent="." instance=ExtResource("2_0ejsc")]
+layer = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-1, -1)
@@ -39,6 +43,7 @@ theme_override_constants/separation = 24
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
 text = "设置"
 horizontal_alignment = 1
@@ -52,6 +57,7 @@ theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "音效"
 
 [node name="SfxSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxOptionContainer"]
@@ -66,6 +72,7 @@ theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/musicOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "音乐"
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/musicOptionContainer"]
@@ -73,6 +80,7 @@ unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.01
+value = 0.5
 
 [node name="WindowOptionContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -80,6 +88,7 @@ theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "窗口设置"
 
 [node name="WindowButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionContainer" instance=ExtResource("3_0ejsc")]
