@@ -6,10 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b2ixartt2giu2" path="res://scenes/ui/sound_button.tscn" id="3_0ejsc"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
-script = ExtResource("1_imaij")
-
-[node name="Vignette" parent="." instance=ExtResource("2_0ejsc")]
 layer = 2
+script = ExtResource("1_imaij")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-1, -1)
@@ -105,3 +103,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 text = "退出
 "
+
+[node name="Vignette" parent="." instance=ExtResource("2_0ejsc")]
+layer = 3

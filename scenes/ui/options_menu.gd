@@ -1,7 +1,7 @@
 extends CanvasLayer
 #设置菜单
 
-#signal back_pressed
+signal back_pressed
 
 #窗口按钮
 @onready var window_button: Button = %WindowButton
@@ -65,5 +65,5 @@ func on_audio_slider_changed(value: float, bus_name: String):
 	
 
 func on_back_pressed():
-	#back_pressed.emit()
-	queue_free()
+	back_pressed.emit()
+	#queue_free()
