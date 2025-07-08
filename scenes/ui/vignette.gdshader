@@ -1,5 +1,5 @@
-shader_type canvas_item;
 //被攻击时阴影效果
+shader_type canvas_item;
 
 uniform float vignette_intensity = 0.4;
 uniform float vignette_opacity : hint_range(0.0, 1.0) = 0.5;

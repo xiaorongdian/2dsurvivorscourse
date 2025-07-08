@@ -1,5 +1,5 @@
-shader_type canvas_item;
 //击中时怪物纹理变化
+shader_type canvas_item;
 
 //百分比 以变量形式设置，编辑器范围 0-1
 uniform float lerp_percent : hint_range(0.0, 1.0);
