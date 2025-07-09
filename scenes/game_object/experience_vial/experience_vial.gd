@@ -28,7 +28,7 @@ func disable_collision():
 
 func collect():
 	#发信号
-	GameEvents.emit_experiecnce_vial_collecter(1)
+	GameEvents.emit_experiecnce_vial_collected(1)
 	queue_free()
 
 
