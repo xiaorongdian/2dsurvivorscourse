@@ -13,7 +13,6 @@ config_version=5
 config/name="2DSurvivorsCourse"
 run/main_scene="uid://dna81ulcvj47i"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="2DSurvivorsCourse"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
