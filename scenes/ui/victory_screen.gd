@@ -17,6 +17,7 @@ func _ready() -> void:
 	$%QuitButton.pressed.connect(on_quit_button_pressed)
 
 
+#播放短曲
 func play_jingle(defeat: bool = false):
 	if defeat:
 		MusicPlayer.stop()

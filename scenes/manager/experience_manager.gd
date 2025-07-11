@@ -14,7 +14,8 @@ var current_level = 1
 
 func _ready():
 	#接收信号
-	GameEvents.experiecnce_vial_collecter.connect(on_experience_vial_collecter)
+	GameEvents.experiecnce_vial_collected.connect(on_experience_vial_collecter)
+
 
 func increment_experience(number: float):
 	current_experience += number
