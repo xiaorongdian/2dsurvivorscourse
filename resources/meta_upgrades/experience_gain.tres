@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dpt1h3al88vls"]
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://dpt1h3al88vls"]
 
 [ext_resource type="Script" uid="uid://c5qgdiv8bpmuf" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_j6tqy"]
 
@@ -6,4 +6,6 @@
 script = ExtResource("1_j6tqy")
 id = "experience_gain"
 max_quantity = 1
-description = "经验获取下降10%"
+experience_cost = 100
+title = "积累经验"
+description = "经验获取提升10%"
