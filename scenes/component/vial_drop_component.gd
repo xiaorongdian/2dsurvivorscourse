@@ -6,7 +6,7 @@ extends Node
 #经验瓶
 @export var vail_scene: PackedScene
 #掉落概率
-@export_range(0,1) var exp_range: float = .5
+@export_range(0,1) var drop_percent: float = .5
 
 func _ready() -> void:
 	#血条组件连接信号到on_died
@@ -14,7 +14,13 @@ func _ready() -> void:
 	
 	
 func on_died():
-	if(randf() > exp_range):
+	#调整掉落概率，加上局外成长
+	var adjusted_drop_percent = drop_percent
+	var experience_gain_upgrade_count = MetaProgression.get_upgrade_count("experience_gain")
+	if experience_gain_upgrade_count > 0:
+		adjusted_drop_percent += .1
+		
+	if(randf() > adjusted_drop_percent):
 		return
 	if vail_scene == health_component:
 		return

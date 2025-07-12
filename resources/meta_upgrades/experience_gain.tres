@@ -8,4 +8,4 @@ id = "experience_gain"
 max_quantity = 1
 experience_cost = 100
 title = "积累经验"
-description = "经验获取提升10%"
+description = "经验瓶掉落提升10%"

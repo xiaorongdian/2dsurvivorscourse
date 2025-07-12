@@ -4,4 +4,3 @@
 
 [node name="VialDropComponent" type="Node"]
 script = ExtResource("1_l1ouf")
-exp_range = 0.35

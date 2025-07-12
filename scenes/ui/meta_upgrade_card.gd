@@ -7,6 +7,7 @@ extends PanelContainer
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var purchase_button: Button = %PurchaseButton
 @onready var progress_label: Label = %ProgressLabel
+@onready var count_label: Label = %CountLabel
 
 
 var upgrade: MetaUpgrade
@@ -27,14 +28,25 @@ func set_meta_upgrade(upgrade_param: MetaUpgrade):
 
 #加入局外升级能力
 func update_progress():
-	var currency = MetaProgression.save_data["meta_upgrade_currency"] 
+	var current_quantity = 0
+	if MetaProgression.save_data["meta_upgrades"].has(upgrade.id):
+		current_quantity = MetaProgression.save_data["meta_upgrades"][upgrade.id]["quantity"]
+	
+	#达到最大
+	var is_maxed = current_quantity >= upgrade.max_quantity
+	var currency = MetaProgression.save_data["meta_upgrade_currency"]
 	#百分比
 	var percent = currency / upgrade.experience_cost
 	percent = min(percent, 1)
 	progress_bar.value = percent
 	#100%之前禁用
-	purchase_button.disabled = percent < 1
+	purchase_button.disabled = percent < 1 || is_maxed
+	if is_maxed:
+		purchase_button.text = "Max"
 	progress_label.text = str(currency) + "/" + str(upgrade.experience_cost)
+	#%占位符 %d 会换成后面的整数
+	count_label.text = "x%d" % current_quantity
+	
 	
 
 #选择卡片

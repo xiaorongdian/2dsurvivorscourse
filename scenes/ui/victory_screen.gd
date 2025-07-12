@@ -13,7 +13,7 @@ func _ready() -> void:
 	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	
 	get_tree().paused = true
-	$%ResartButton.pressed.connect(on_resart_button_pressed)
+	$%ContinueButton.pressed.connect(on_continue_button_pressed)
 	$%QuitButton.pressed.connect(on_quit_button_pressed)
 
 
@@ -32,15 +32,15 @@ func set_defeat():
 	$%DescriptionLabel.text = "差一点就成功啦!"
 
 
-func on_resart_button_pressed():
+func on_continue_button_pressed():
 	ScreenTransition.transition()
 	await  ScreenTransition.transitioned_halfway
 	
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/meta_menu.tscn")
 
 
 func on_quit_button_pressed():
-	ScreenTransition.transition()
-	await  ScreenTransition.transitioned_halfway
-	get_tree().quit()
+	ScreenTransition.transition_to_scene("res://scenes/ui/main_menu.tscn")
+	await ScreenTransition.transitioned_halfway
+	get_tree().paused = false
