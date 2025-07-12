@@ -7,6 +7,8 @@ var additional_damage_percent = 1
 
 
 func _ready() -> void:
+	#一有这个能力就触发一次
+	on_timer_timeout()
 	$Timer.timeout.connect(on_timer_timeout)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 

@@ -109,7 +109,7 @@ autoplay = "walk"
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_pcrk2")]
 health_component = NodePath("../HealthComponent")
 vail_scene = ExtResource("4_elloc")
-drop_percent = 0.3
+drop_percent = 1.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("5_v58qd")]
 max_speed = 60

@@ -33,12 +33,14 @@ func get_spaw_position():
 	#初始向量
 	var spawn_position = Vector2.ZERO
 	#敌人位置随机旋转向量
-	var randRange = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	
 	for i in 4:
-		spawn_position = player.global_position + randRange * MAX_RANGE
+		spawn_position = player.global_position + random_direction * MAX_RANGE
+		#再加20像素，解决正好抵到墙上的bug
+		var additional_check_offset = random_direction * 20
 		# 构造一个参数实体 1 << 0 意思是1图层是第0位值是1，如果是 20图层是第19位值是2^19 写成 1 << 19
-		var query_paramaters =  PhysicsRayQueryParameters2D.create(player.global_position,spawn_position,1 << 0)
+		var query_paramaters =  PhysicsRayQueryParameters2D.create(player.global_position,spawn_position + additional_check_offset,1 << 0)
 		#检查是否有碰撞，返回一个map
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_paramaters)
 		
@@ -47,7 +49,7 @@ func get_spaw_position():
 			return spawn_position
 		else:
 			#有碰撞 旋转90度
-			randRange = randRange.rotated(deg_to_rad(90))	
+			random_direction = random_direction.rotated(deg_to_rad(90))	
 	return spawn_position
 			
 func on_timer_timeout():

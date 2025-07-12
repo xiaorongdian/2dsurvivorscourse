@@ -11,6 +11,14 @@ const MAX_RADIUS = 100
 
 func _ready() -> void:
 	base_rotation = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	attack()
+
+
+func _enter_tree() -> void:
+	attack()
+
+
+func attack():
 	#编程动画
 	var tween = create_tween()
 	#从0到2π 用时 3 秒 0.0~2.0不断传入 tween_method方法
