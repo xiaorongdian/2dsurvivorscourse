@@ -55,6 +55,8 @@ func on_window_button_pressed():
 	if mode != DisplayServer.WINDOW_MODE_FULLSCREEN:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
+		#因为window_set_mode默认会将无边界设置为true
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	update_display()
 

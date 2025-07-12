@@ -14,7 +14,13 @@ config/name="2DSurvivorsCourse"
 run/main_scene="uid://dna81ulcvj47i"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.247059, 0.14902, 0.192157, 1)
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://c25ahxda3b4ie"
+config/icon="uid://c25ahxda3b4ie"
+config/windows_native_icon="res://icon.ico"
+boot_splash/use_filter.debug=false
 
 [autoload]
 
@@ -31,9 +37,11 @@ gdscript/warnings/unused_parameter=0
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
+window/size/mode.debug=3
 
 [global_group]
 
@@ -97,3 +105,5 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
+textures/vram_compression/import_etc2_astc.macos=true
