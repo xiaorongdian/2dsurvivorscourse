@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
+#时间
+@export var arena_time_manager: Node
+
+
 #速度组件
 @onready var velocity_component: Node = $VelocityComponent
 
@@ -23,10 +27,12 @@ var number_colliding_bodies = 0
 var base_speed = 0 
 
 func _ready() -> void:
+	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_speed = velocity_component.max_speed
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
+	health_component.health_decreased.connect(on_health_decreased)
 	health_component.health_changed.connect(on_health_changed)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
@@ -89,10 +95,15 @@ func on_damage_interval_timer_timeout():
 	check_deal_damage()
 
 
-#当hp发生变化
-func on_health_changed():
+#当hp减少时
+func on_health_decreased():
 	$HitRandomAudioPlayerComponent.play_random()
 	GameEvents.emit_player_damaged()
+	update_health_display()
+
+
+#当hp发生变化
+func on_health_changed():
 	update_health_display()
 
 
@@ -108,3 +119,10 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, currect_upgrades:
 	elif ability_upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * currect_upgrades["player_speed"]["quantity"] * .1)
 		
+
+func on_arena_difficulty_increased(difficulty: int):
+	var health_regeneration_quantity = MetaProgression.get_upgrade_count("health_regeneration")
+	if health_regeneration_quantity > 0:
+		var is_thirty_second_interval = (difficulty % 4) == 0
+		if is_thirty_second_interval:
+			health_component.heal(health_regeneration_quantity)

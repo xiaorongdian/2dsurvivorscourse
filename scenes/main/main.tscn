@@ -44,9 +44,10 @@ tile_set = ExtResource("1_iuonh")
 [node name="Entities" type="Node2D" parent="." groups=["entities_layer"]]
 y_sort_enabled = true
 
-[node name="Player" parent="Entities" instance=ExtResource("1_hyk8p")]
+[node name="Player" parent="Entities" node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_hyk8p")]
 unique_name_in_owner = true
 position = Vector2(302, 225)
+arena_time_manager = NodePath("../../ArenaTimeManager")
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 y_sort_enabled = true

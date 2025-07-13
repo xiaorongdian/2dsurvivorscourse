@@ -8,4 +8,4 @@ id = "health_regeneration"
 max_quantity = 3
 experience_cost = 200
 title = "生命恢复"
-description = "每30秒回复生命"
+description = "每级增加每20秒回复生命1点"
