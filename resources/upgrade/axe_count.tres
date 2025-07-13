@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://dkksg0511w05v"]
+
+[ext_resource type="Script" uid="uid://cwkwadvqqxnwo" path="res://resources/upgrade/ability_upgratde.gd" id="1_m7aov"]
+
+[resource]
+script = ExtResource("1_m7aov")
+id = "axe_count"
+max_quantity = 5
+name = "数量-斧"
+description = "增加斧数量1"
+metadata/_custom_type_script = "uid://cwkwadvqqxnwo"

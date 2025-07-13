@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://ct8f7nlwk75p6"]
+
+[ext_resource type="Script" uid="uid://cwkwadvqqxnwo" path="res://resources/upgrade/ability_upgratde.gd" id="1_hk2wv"]
+
+[resource]
+script = ExtResource("1_hk2wv")
+id = "anvil_count"
+max_quantity = 5
+name = "数量-铁钻"
+description = "增加铁钻数量1"
+metadata/_custom_type_script = "uid://cwkwadvqqxnwo"

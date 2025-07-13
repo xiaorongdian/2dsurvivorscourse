@@ -14,8 +14,12 @@ var upgrade_pool:WeightedTable = WeightedTable.new()
 #预加载能力资源
 #能力-斧
 var upgrade_axe = preload("res://resources/upgrade/axe.tres")
+#数量-斧
+var upgrade_axe_acount = preload("res://resources/upgrade/axe_count.tres")
 #能力-铁钻
 var upgrade_anvil = preload("res://resources/upgrade/anvil.tres")
+#数量-铁钻
+var upgrade_anvil_acount = preload("res://resources/upgrade/anvil_count.tres")
 #伤害-斧
 var upgrade_axe_damage = preload("res://resources/upgrade/axe_damage.tres")
 #速度-剑
@@ -58,9 +62,14 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 
 #修正一下升级能力池
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
-	#如果选择了获得斧头能力，则升级池中加入斧头伤害增加的选项
+	#如果选择了获得斧头能力，则升级池中加入斧头伤害增加、数量的选项
 	if chosen_upgrade.id == upgrade_axe.id:
 		upgrade_pool.add_item(upgrade_axe_damage, 10)
+		upgrade_pool.add_item(upgrade_axe_acount, 10)
+	#如果选择了获得铁钻能力，则升级池中加入铁钻数量的选项
+	elif chosen_upgrade.id == upgrade_anvil.id:
+		upgrade_pool.add_item(upgrade_anvil_acount, 10)
+
 
 
 #选择升级时显示的类目

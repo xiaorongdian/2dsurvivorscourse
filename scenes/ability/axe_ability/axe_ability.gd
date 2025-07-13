@@ -14,26 +14,23 @@ func _ready() -> void:
 	attack()
 
 
-func _enter_tree() -> void:
-	attack()
-
-
 func attack():
 	#编程动画
 	var tween = create_tween()
+	var direction = [TAU, -TAU][randi() % 2]
 	#从0到2π 用时 3 秒 0.0~2.0不断传入 tween_method方法
-	tween.tween_method(tween_method, 0.0, 2.0, 3)
+	tween.tween_method(tween_method.bind(direction), 0.0, 2.0, 3)
 	#tween运行完调用，使斧头消失
 	tween.tween_callback(queue_free)
 
 
-func tween_method(rotations: float):
+func tween_method(rotations: float, direction):
 	#旋转百分比 2是我们最大值 rotations 在2秒内从0增长到2
 	var percent = rotations / 2
 	#百分比*半径=当前半径
 	var currect_radius = percent * MAX_RADIUS
-	#现在的方向
-	var current_direction = base_rotation.rotated(rotations * TAU)
+	#现在的方向 π和-π随机取
+	var current_direction = base_rotation.rotated(rotations * direction)
 	
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
