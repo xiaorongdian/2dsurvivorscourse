@@ -14,6 +14,8 @@ var upgrade_pool:WeightedTable = WeightedTable.new()
 #预加载能力资源
 #能力-斧
 var upgrade_axe = preload("res://resources/upgrade/axe.tres")
+#能力-铁钻
+var upgrade_anvil = preload("res://resources/upgrade/anvil.tres")
 #伤害-斧
 var upgrade_axe_damage = preload("res://resources/upgrade/axe_damage.tres")
 #速度-剑
@@ -27,6 +29,7 @@ var upgrade_player_speed = preload("res://resources/upgrade/player_speed.tres")
 func _ready():
 	#放到池子里
 	upgrade_pool.add_item(upgrade_axe, 10)
+	upgrade_pool.add_item(upgrade_anvil, 10)
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	upgrade_pool.add_item(upgrade_player_speed, 5)

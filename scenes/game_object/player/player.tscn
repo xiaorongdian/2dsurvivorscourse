@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://b18o0gkulxfsp"]
+[gd_scene load_steps=25 format=3 uid="uid://b18o0gkulxfsp"]
 
 [ext_resource type="Texture2D" uid="uid://djictqy0tyt7o" path="res://scenes/game_object/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://cwqc58gw2yvvg" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://bt7qjoy5mv40h" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://cxm8ccp38p802" path="res://scenes/component/health_component.tscn" id="2_ss5pk"]
 [ext_resource type="PackedScene" uid="uid://ej3mggt50ceo" path="res://scenes/component/velocity_component.tscn" id="3_tj6oj"]
+[ext_resource type="PackedScene" uid="uid://cvfy6ycfaq48i" path="res://scenes/ability/sword_ability/sword_ability.tscn" id="5_3uig4"]
 [ext_resource type="PackedScene" uid="uid://deek1n1ds5r0y" path="res://scenes/component/random_stream_player_2d_component.tscn" id="5_bfkik"]
 [ext_resource type="AudioStream" uid="uid://u35aesgo14dl" path="res://assets/audio/footstep_carpet_000.ogg" id="6_gme53"]
 [ext_resource type="AudioStream" uid="uid://dbnftjnd6d7bq" path="res://assets/audio/footstep_carpet_001.ogg" id="7_3uig4"]
@@ -141,6 +142,7 @@ acceleration = 25.0
 [node name="Abilitise" type="Node" parent="."]
 
 [node name="SwordController" parent="Abilitise" instance=ExtResource("2_gmlin")]
+sword_ability = ExtResource("5_3uig4")
 
 [node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("5_bfkik")]
 autoplay = true

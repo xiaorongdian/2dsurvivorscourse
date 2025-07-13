@@ -15,7 +15,6 @@ var upgrade: MetaUpgrade
 
 func _ready() -> void:
 	purchase_button.pressed.connect(on_purchase_pressed)
-	gui_input.connect(on_gui_input)
 	
 
 #构造升级时卡片显示
@@ -52,12 +51,6 @@ func update_progress():
 #选择卡片
 func select_card():
 	$AnimationPlayer.play("selected")
-
-
-#点击事件
-func on_gui_input(event: InputEvent):		
-	if event.is_action_pressed("left_click"):
-		select_card()
 		
 
 #购买按钮按下

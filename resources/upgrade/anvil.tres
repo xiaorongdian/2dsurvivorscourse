@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cxxcnxwvx1m83"]
+
+[ext_resource type="PackedScene" uid="uid://c5ld56to134ci" path="res://scenes/ability/anvil_ability_controller/anvil_ability_controller.tscn" id="1_1l02o"]
+[ext_resource type="Script" uid="uid://dnlgkcji75y4a" path="res://resources/upgrade/ability.gd" id="2_1456p"]
+
+[resource]
+script = ExtResource("2_1456p")
+ability_controller_scene = ExtResource("1_1l02o")
+id = "anvil"
+max_quantity = 1
+name = "能力-铁钻"
+description = "获得能力：
+随机释放铁钻"
