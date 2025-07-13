@@ -7,6 +7,8 @@ const MAX_RANGE = 355
 @export var base_enemy_scene : PackedScene
 #巫师
 @export var wizard_enemy_scene : PackedScene
+#蝙蝠
+@export var bat_enemy_scene : PackedScene
 #地图时间
 @export var arena_time_manager: Node
 
@@ -76,4 +78,6 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 	
 	#地图难度6时出现巫师敌人，5秒1级就是30秒
 	if arena_difficulty == 6:
-		enemy_table.add_item(wizard_enemy_scene, 20)
+		enemy_table.add_item(wizard_enemy_scene, 15)
+	elif arena_difficulty == 18:
+		enemy_table.add_item(bat_enemy_scene, 20)

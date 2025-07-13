@@ -2,7 +2,7 @@
 extends Node
 
 #最大移动速度
-@export var max_speed:int = 40
+@export var max_speed:int = 40 
 #加速度
 @export var acceleration:float = 5
 
