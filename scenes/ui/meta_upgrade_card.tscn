@@ -113,9 +113,9 @@ border_width_bottom = 2
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_card"]]
-custom_minimum_size = Vector2(170, 0)
-offset_right = 150.0
-offset_bottom = 150.0
+custom_minimum_size = Vector2(170, 240)
+offset_right = 170.0
+offset_bottom = 211.0
 pivot_offset = Vector2(75, 75)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -158,6 +158,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
+size_flags_vertical = 3
 mouse_filter = 0
 theme_type_variation = &"BlueOutlineLabel"
 text = "Write some

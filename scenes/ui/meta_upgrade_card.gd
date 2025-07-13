@@ -35,7 +35,7 @@ func update_progress():
 	var is_maxed = current_quantity >= upgrade.max_quantity
 	var currency = MetaProgression.save_data["meta_upgrade_currency"]
 	#百分比
-	var percent = currency / upgrade.experience_cost
+	var percent = (currency as float / upgrade.experience_cost as float)
 	percent = min(percent, 1)
 	progress_bar.value = percent
 	#100%之前禁用

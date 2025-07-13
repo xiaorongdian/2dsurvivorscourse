@@ -14,11 +14,13 @@ const MAX_RANGE = 355
 
 @onready var timer = $Timer
 
+
 #重生时间
 var base_spaw_time = 0
 #怪权重表
 var enemy_table = WeightedTable.new()
-
+#生产敌人数量
+var number_to_spawn = 1
 
 func _ready() -> void:
 	enemy_table.add_item(base_enemy_scene, 10)
@@ -59,15 +61,15 @@ func on_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if(null == player):
 		return
-	
-	#从敌人权重表取
-	var enemy_scene = enemy_table.pick_item()
-	var enemy = enemy_scene.instantiate() as Node2D
-	
-	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
-	entities_layer.add_child(enemy)
-	# 将随机向量加到敌人身上。
-	enemy.global_position = get_spaw_position()
+	for i in number_to_spawn:
+		#从敌人权重表取
+		var enemy_scene = enemy_table.pick_item()
+		var enemy = enemy_scene.instantiate() as Node2D
+		
+		var entities_layer = get_tree().get_first_node_in_group("entities_layer")
+		entities_layer.add_child(enemy)
+		# 将随机向量加到敌人身上。
+		enemy.global_position = get_spaw_position()
 	
 
 func on_arena_difficulty_increased(arena_difficulty: int):
@@ -81,3 +83,6 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 		enemy_table.add_item(wizard_enemy_scene, 15)
 	elif arena_difficulty == 12:
 		enemy_table.add_item(bat_enemy_scene, 20)
+	
+	if (arena_difficulty % 5) == 0:
+		number_to_spawn += 5
